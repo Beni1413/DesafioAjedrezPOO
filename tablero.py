@@ -4,7 +4,6 @@ from Piezas.reina import Reina
 from Piezas.rey import Rey
 from Piezas.caballo import Caballo
 from Piezas.alfil import Alfil
-
 class Tablero:
     def __init__(self):
         self._filas = 8
@@ -13,7 +12,6 @@ class Tablero:
         self.inicializar()
 
     def inicializar(self):
-        # Peones
         for col in range(8):
             self.grid[1][col] = Peon("Blanco", (1, col))
             self.grid[6][col] = Peon("Negro", (6, col))
@@ -53,3 +51,14 @@ class Tablero:
             print(fila_str)
         print(letras_col)
         print("‾"*27)
+
+    def mover_pieza(self, origen, destino):
+        fila_o, col_o = origen
+        fila_d, col_d = destino
+        pieza = self.grid[fila_o][col_o]
+        if pieza:
+            if pieza.moverse((fila_d, col_d), self):
+                self.grid[fila_d][col_d] = pieza
+                self.grid[fila_o][col_o] = None
+                return True
+        return False
