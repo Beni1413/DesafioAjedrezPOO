@@ -20,7 +20,7 @@ def main():
     if exito:
         print("Movimiento realizado!")
     else:
-        print("Movimiento inválido.")
+        print("Ese movimiento no se puede hacer profe")
     tablero.mostrar()
 
 if __name__ == "__main__":
